@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>eSFL 2026 Post-Free-Agency Rankings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{--ground:#F1F3F5;--surface:#FFFFFF;--ink:#1A2430;--muted:#5B6874;--rule:#D5DBE1;--accent:#1F6F4A;--gold:#A8801C;
+--ga:#1F6F4A;--gb:#2F5F91;--gc:#A8801C;--gd:#A23D2E;--ga-ink:#fff;--gb-ink:#fff;--gc-ink:#fff;--gd-ink:#fff;
+--qb:#2F5F91;--rb:#1F6F4A;--wr:#C7902A;--te:#7A5CA8;--idp:#4C5A68;--pk:#9AA7B3;--warn-bg:#F8E9E5;--warn-ink:#8A3322;--ok-bg:#E4F1EA;--ok-ink:#1B5C3D;--slab-w:88px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#0F1418;--surface:#171E25;--ink:#E6EBEF;--muted:#98A5B0;--rule:#2B353F;--accent:#4DBE85;--gold:#E0B451;
+--ga:#2E8B5F;--gb:#3E77B5;--gc:#B98E2B;--gd:#B54A39;--qb:#5D8FD1;--rb:#3FA574;--wr:#D9A63D;--te:#9B82C9;--idp:#7B8B9B;--pk:#5E6C79;--warn-bg:#3A1F1A;--warn-ink:#F0A090;--ok-bg:#183327;--ok-ink:#8FD9B0}}
+:root[data-theme="dark"]{--ground:#0F1418;--surface:#171E25;--ink:#E6EBEF;--muted:#98A5B0;--rule:#2B353F;--accent:#4DBE85;--gold:#E0B451;
+--ga:#2E8B5F;--gb:#3E77B5;--gc:#B98E2B;--gd:#B54A39;--qb:#5D8FD1;--rb:#3FA574;--wr:#D9A63D;--te:#9B82C9;--idp:#7B8B9B;--pk:#5E6C79;--warn-bg:#3A1F1A;--warn-ink:#F0A090;--ok-bg:#183327;--ok-ink:#8FD9B0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+h1,h2,h3,.grade,.gpill,.divrank,.pts{font-family:"Barlow Condensed","Arial Narrow",Impact,sans-serif}
+.mast{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:28px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 4px}
+h1{font-size:clamp(40px,6vw,64px);line-height:.95;margin:0;font-weight:700;text-wrap:balance;letter-spacing:-.01em}
+.mast p{margin:10px 0 0;max-width:62ch;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+h2{font-size:30px;margin:36px 0 12px;font-weight:600;letter-spacing:.01em;display:flex;align-items:baseline;gap:12px}
+h2 small{font-family:"IBM Plex Sans",sans-serif;font-size:13px;color:var(--muted);font-weight:400;letter-spacing:0}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:720px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;background:var(--ground)}
+td.num,th.num{text-align:right}
+tr:last-child td{border-bottom:0}
+td a{color:inherit;text-decoration:none;font-weight:500} td a:hover{text-decoration:underline}
+.shape{color:var(--muted);font-size:13px}
+.gpill{display:inline-block;min-width:34px;text-align:center;padding:1px 6px;font-size:17px;font-weight:700;color:#fff;border-radius:2px}
+.ga{background:var(--ga)}.gb{background:var(--gb)}.gc{background:var(--gc)}.gd{background:var(--gd)}
+.divs{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.teams{display:grid;gap:16px}
+.team{display:grid;grid-template-columns:var(--slab-w) 1fr;background:var(--surface);border:1px solid var(--rule)}
+.slab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;padding:14px 6px}
+.grade{font-size:52px;font-weight:700;line-height:1}
+.divrank{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.body{padding:14px 18px 16px;min-width:0}
+.body header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+h3{font-size:26px;margin:0;font-weight:600;line-height:1.05}
+.pts{font-size:22px;font-weight:600;color:var(--accent)} .pts small{font-size:13px;font-family:"IBM Plex Sans",sans-serif;font-weight:400;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.chip{font-size:12px;padding:2px 8px;border:1px solid var(--rule);border-radius:999px;color:var(--muted)}
+.chip.warn{background:var(--warn-bg);color:var(--warn-ink);border-color:transparent;font-weight:500}
+.chip.ok{background:var(--ok-bg);color:var(--ok-ink);border-color:transparent;font-weight:500}
+.bar{display:flex;height:20px;width:100%;background:var(--ground);border-radius:2px;overflow:hidden;margin-bottom:12px}
+.seg{display:block;height:100%;font-size:10.5px;line-height:20px;color:#fff;padding-left:5px;overflow:hidden;white-space:nowrap;letter-spacing:.04em;font-weight:500}
+.s-QB{background:var(--qb)}.s-RB{background:var(--rb)}.s-WR{background:var(--wr)}.s-TE{background:var(--te)}.s-IDP{background:var(--idp)}.s-PK{background:var(--pk)}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+dt{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;padding-top:3px}
+dd{margin:0;max-width:68ch}
+.method{background:var(--surface);border:1px solid var(--rule);padding:16px 20px;max-width:none;margin-top:8px}
+.method p{margin:0 0 8px;max-width:80ch} .method p:last-child{margin:0}
+.outlook table{min-width:0}
+footer{margin-top:36px;font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
+@media (max-width:860px){.divs{grid-template-columns:1fr}.mast{grid-template-columns:1fr}}
+@media (max-width:520px){:root{--slab-w:64px}.grade{font-size:38px}dl{grid-template-columns:1fr}dt{padding-top:6px}}
+@media (prefers-reduced-motion:no-preference){td a:focus-visible,.team:target{outline:2px solid var(--accent);outline-offset:2px}}
+</style>
+<style>
+.navlink{display:inline-block;margin-bottom:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+.navlink:hover{color:var(--accent)}
+.movers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:8px 0 4px}
+.mover{background:var(--surface);border:1px solid var(--rule);padding:12px 14px}
+.mover .n{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;line-height:1}
+.mover .t{font-weight:600;margin:2px 0 4px}
+.mover p{margin:0;font-size:13px;color:var(--muted)}
+.up{color:var(--accent)} .down{color:var(--gd)}
+.pts small{display:block;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="mast">
+  <div>
+    <a class="navlink" href="./">&larr; Draft report card, Sept 7</a>
+    <p class="eyebrow">eSFL · Both divisions · After Tuesday's free agency</p>
+    <h1>Post-Free-Agency Rankings</h1>
+    <p>All fourteen rosters re-priced from the live MFL export on Wednesday morning, after every add, drop and IR move made on Tuesday. Same model as the draft report card: eSFL scoring, every legal 14-man lineup tried, best one kept. Sunday's numbers are shown beside Wednesday's so you can see what the wire was worth.</p>
+  </div>
+  <div class="legend"><span><i style="background:var(--qb)"></i>QB</span><span><i style="background:var(--rb)"></i>RB</span><span><i style="background:var(--wr)"></i>WR</span><span><i style="background:var(--te)"></i>TE</span><span><i style="background:var(--idp)"></i>IDP</span><span><i style="background:var(--pk)"></i>PK</span></div>
+</div>
+
+<h2>What Tuesday changed <small>Free agency opened 7:00 a.m. ET; 63 transactions followed</small></h2>
+<div class="movers">
+  <div class="mover"><div class="n up">+104</div><div class="t">Houston Rams</div><p>Three empty defensive slots filled inside 90 seconds of the open. Biggest gain in the league, and the roster is still short on defensive talent.</p></div>
+  <div class="mover"><div class="n up">15 sec</div><div class="t">Albany Alibi</div><p>Warner at 7:00:02, Myers at 7:00:13. Both holes closed before most managers had loaded the page, and Albany is now in the Western points race.</p></div>
+  <div class="mover"><div class="n down">&minus;94</div><div class="t">Zima Fatbacks</div><p>Fixed the kicker, then dropped Van Ginkel at 11:50 p.m. for a tight end. Now exactly five defenders, with Bosa locked into the fifth slot.</p></div>
+  <div class="mover"><div class="n down">&minus;285</div><div class="t">Psycho Billiecats</div><p>Six adds and still a slot short, with a retired player occupying another. The only roster in the league that cannot legally start Week 1.</p></div>
+</div>
+
+<h2>The table <small>Wed = after Tuesday's moves · Sun = the draft report card line</small></h2>
+<div class="tablewrap"><table>
+<thead><tr><th class="num">Rk</th><th class="num">Mv</th><th>Div</th><th>Franchise</th><th>Grade</th><th class="num">Wed</th><th class="num">Sun</th><th class="num">&Delta;</th><th>Best shape</th><th class="num">Empty</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td class="num" style="color:var(--muted)">–</td><td>W</td><td><a href="#frost-furious-flurries">Frost Furious Flurries</a></td><td><span class="gpill ga">A</span></td><td class="num">3,638</td><td class="num" style="color:var(--muted)">3,651</td><td class="num" style="color:var(--gd)">-13</td><td class="shape">1QB·4RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">2</td><td class="num" style="color:var(--muted)">–</td><td>E</td><td><a href="#fields-fanatix">Fields Fanatix</a></td><td><span class="gpill ga">A-</span></td><td class="num">3,340</td><td class="num" style="color:var(--muted)">3,351</td><td class="num" style="color:var(--gd)">-11</td><td class="shape">2QB·3RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">3</td><td class="num" style="color:var(--muted)">–</td><td>E</td><td><a href="#rhodes-runners">Rhodes Runners</a></td><td><span class="gpill gb">B+</span></td><td class="num">3,315</td><td class="num" style="color:var(--muted)">3,335</td><td class="num" style="color:var(--gd)">-20</td><td class="shape">2QB·4RB·1WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">4</td><td class="num" style="color:var(--muted)">–</td><td>E</td><td><a href="#nachman-manning-face">Nachman Manning Face</a></td><td><span class="gpill gb">B+</span></td><td class="num">3,268</td><td class="num" style="color:var(--muted)">3,298</td><td class="num" style="color:var(--gd)">-30</td><td class="shape">1QB·4RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">5</td><td class="num" style="color:var(--muted)">&#9650;2</td><td>E</td><td><a href="#wallie-s-texas-stars">Wallie&#x27;s Texas Stars</a></td><td><span class="gpill gb">B</span></td><td class="num">3,232</td><td class="num" style="color:var(--muted)">3,244</td><td class="num" style="color:var(--gd)">-12</td><td class="shape">2QB·3RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">6</td><td class="num" style="color:var(--muted)">&#9660;1</td><td>W</td><td><a href="#rj-griffins">RJ Griffins</a></td><td><span class="gpill gb">B</span></td><td class="num">3,214</td><td class="num" style="color:var(--muted)">3,224</td><td class="num" style="color:var(--gd)">-10</td><td class="shape">1QB·2RB·4WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">7</td><td class="num" style="color:var(--muted)">&#9660;1</td><td>W</td><td><a href="#perdew-pulverizers">Perdew Pulverizers</a></td><td><span class="gpill gb">B</span></td><td class="num">3,203</td><td class="num" style="color:var(--muted)">3,208</td><td class="num" style="color:var(--gd)">-5</td><td class="shape">2QB·4RB·1WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">8</td><td class="num" style="color:var(--muted)">&#9650;1</td><td>E</td><td><a href="#houston-rams">Houston Rams</a></td><td><span class="gpill gb">B-</span></td><td class="num">3,201</td><td class="num" style="color:var(--muted)">3,097</td><td class="num" style="color:var(--accent)">+104</td><td class="shape">2QB·2RB·3WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">9</td><td class="num" style="color:var(--muted)">&#9650;1</td><td>W</td><td><a href="#albany-alibi">Albany Alibi</a></td><td><span class="gpill gb">B-</span></td><td class="num">3,184</td><td class="num" style="color:var(--muted)">3,151</td><td class="num" style="color:var(--accent)">+33</td><td class="shape">2QB·2RB·3WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">10</td><td class="num" style="color:var(--muted)">&#9650;2</td><td>E</td><td><a href="#igama-sweaty-palms">Igama Sweaty Palms</a></td><td><span class="gpill gc">C+</span></td><td class="num">3,134</td><td class="num" style="color:var(--muted)">3,086</td><td class="num" style="color:var(--accent)">+48</td><td class="shape">2QB·3RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">11</td><td class="num" style="color:var(--muted)">&#9660;3</td><td>W</td><td><a href="#texan-bruisers">Texan Bruisers</a></td><td><span class="gpill gc">C+</span></td><td class="num">3,056</td><td class="num" style="color:var(--muted)">3,072</td><td class="num" style="color:var(--gd)">-16</td><td class="shape">2QB·3RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">12</td><td class="num" style="color:var(--muted)">&#9660;1</td><td>W</td><td><a href="#zima-fatbacks">Zima Fatbacks</a></td><td><span class="gpill gc">C</span></td><td class="num">2,994</td><td class="num" style="color:var(--muted)">3,088</td><td class="num" style="color:var(--gd)">-94</td><td class="shape">2QB·3RB·2WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">13</td><td class="num" style="color:var(--muted)">&#9650;1</td><td>E</td><td><a href="#d-crownholder">D Crownholder</a></td><td><span class="gpill gc">C-</span></td><td class="num">2,865</td><td class="num" style="color:var(--muted)">2,968</td><td class="num" style="color:var(--gd)">-103</td><td class="shape">2QB·2RB·3WR·1TE</td><td class="num">–</td></tr>
+<tr><td class="num">14</td><td class="num" style="color:var(--muted)">&#9660;1</td><td>W</td><td><a href="#psycho-billiecats">Psycho Billiecats</a></td><td><span class="gpill gd">D</span></td><td class="num">2,656</td><td class="num" style="color:var(--muted)">2,941</td><td class="num" style="color:var(--gd)">-285</td><td class="shape">2QB·2RB·3WR·1TE</td><td class="num">1</td></tr>
+</tbody></table></div>
+
+<div class="divs">
+<section>
+<h2>Western Division</h2>
+<div class="teams"><article class="team" id="frost-furious-flurries">
+  <div class="slab ga"><span class="grade">A</span><span class="divrank">West #1</span></div>
+  <div class="body">
+    <header><h3>Frost Furious Flurries</h3><div class="pts">3,638<small> / 3,651 Sun</small></div></header>
+    <div class="chips"><span class="chip">1QB · 4RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -13 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:9.70%" title="QB: 353 projected points">QB 353</span><span class="seg s-RB" style="width:32.65%" title="RB: 1188 projected points">RB 1188</span><span class="seg s-WR" style="width:15.99%" title="WR: 582 projected points">WR 582</span><span class="seg s-TE" style="width:8.44%" title="TE: 307 projected points">TE 307</span><span class="seg s-IDP" style="width:26.30%" title="IDP: 957 projected points">IDP 957</span><span class="seg s-PK" style="width:6.92%" title="PK: 252 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Lassiter and Gainwell at 7:21, then swapped Wright for Roquan Smith eight minutes later. Three adds, two of them starters.</dd>
+      <dt>Strengths</dt><dd>Only roster in the league whose defence clears 950. Four running backs all start under the 4-RB cap. Best tight end in either division.</dd>
+      <dt>Weaknesses</dt><dd>Daniels now prices at 191 under the regressed rates, which pushes the optimal shape to one quarterback. Three bye-6 defenders and no IDP spare in Weeks 6 or 8. McCaffrey carries the usual health tax.</dd>
+      <dt>Outlook</dt><dd>Still the paper favourite by 298 points over the field. The threats are injury and bye-week arithmetic, not any rival&#x27;s roster.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="rj-griffins">
+  <div class="slab gb"><span class="grade">B</span><span class="divrank">West #2</span></div>
+  <div class="body">
+    <header><h3>RJ Griffins</h3><div class="pts">3,214<small> / 3,224 Sun</small></div></header>
+    <div class="chips"><span class="chip">1QB · 2RB · 4WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -10 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:7.99%" title="QB: 257 projected points">QB</span><span class="seg s-RB" style="width:16.05%" title="RB: 516 projected points">RB 516</span><span class="seg s-WR" style="width:36.39%" title="WR: 1170 projected points">WR 1170</span><span class="seg s-TE" style="width:5.69%" title="TE: 183 projected points">TE</span><span class="seg s-IDP" style="width:27.65%" title="IDP: 889 projected points">IDP 889</span><span class="seg s-PK" style="width:6.22%" title="PK: 200 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Won the opening minute: Dowdle at 7:00:23 and Jeffery Simmons at 7:00:42, then Courtland Sutton and Juwan Johnson. Dropped Roquan Smith to make room for Sutton.</dd>
+      <dt>Strengths</dt><dd>Four wide receivers projecting 1,170, the best group in either division, and under the 4-WR cap all four start. Simmons turned a thin defensive interior into a real one.</dd>
+      <dt>Weaknesses</dt><dd>Burrow prices at 222 against Lawrence at 257, so the quarterback room is a rebound bet plus a solid QB1. The backfield only feeds two slots. Kittle is the only tight end.</dd>
+      <dt>Outlook</dt><dd>Second in the West and the most likely of the three chasers to hold a points berth, because the receiving corps has no bye-week failure mode.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="perdew-pulverizers">
+  <div class="slab gb"><span class="grade">B</span><span class="divrank">West #3</span></div>
+  <div class="body">
+    <header><h3>Perdew Pulverizers</h3><div class="pts">3,203<small> / 3,208 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 4RB · 1WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -5 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:14.64%" title="QB: 469 projected points">QB 469</span><span class="seg s-RB" style="width:41.99%" title="RB: 1345 projected points">RB 1345</span><span class="seg s-WR" style="width:7.46%" title="WR: 239 projected points">WR</span><span class="seg s-TE" style="width:6.40%" title="TE: 205 projected points">TE</span><span class="seg s-IDP" style="width:22.54%" title="IDP: 722 projected points">IDP 722</span><span class="seg s-PK" style="width:6.96%" title="PK: 223 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Nick Bolton, T.J. Hockenson and Tyler Shough. Only Bolton reaches the starting lineup.</dd>
+      <dt>Strengths</dt><dd>A backfield projecting 1,345 across four slots, the best positional block anywhere in the league. Aubrey at kicker. Three startable tight ends.</dd>
+      <dt>Weaknesses</dt><dd>The defence projects 722, last among the West&#x27;s legal rosters, and Bolton only lifts it to the bottom of the pack. Four wide receivers total for up to four slots.</dd>
+      <dt>Outlook</dt><dd>Third in the West by eleven points. The running backs are a trade asset nobody else can match; whether they get converted decides the season.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="albany-alibi">
+  <div class="slab gb"><span class="grade">B-</span><span class="divrank">West #4</span></div>
+  <div class="body">
+    <header><h3>Albany Alibi</h3><div class="pts">3,184<small> / 3,151 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 2RB · 3WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip ok">Tuesday +33 pts</span><span class="chip ok">C &rarr; B-</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:20.48%" title="QB: 652 projected points">QB 652</span><span class="seg s-RB" style="width:13.98%" title="RB: 445 projected points">RB 445</span><span class="seg s-WR" style="width:24.29%" title="WR: 773 projected points">WR 773</span><span class="seg s-TE" style="width:7.04%" title="TE: 224 projected points">TE</span><span class="seg s-IDP" style="width:27.02%" title="IDP: 860 projected points">IDP 860</span><span class="seg s-PK" style="width:7.19%" title="PK: 229 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Fred Warner at 7:00:02 and Jason Myers at 7:00:13 — the first and fifth transactions of the entire window. Christian Watson later, and Jordyn Tyson stashed to IR.</dd>
+      <dt>Strengths</dt><dd>Both empty slots closed in fifteen seconds. The quarterback room projects 652, best in the league, and both start. Warner is the single best value added on either wire.</dd>
+      <dt>Weaknesses</dt><dd>The backfield projects 445, last in the league by 71, at the position the rule change made most valuable. Four defensive ends and one linebacker means the defence is capped by type.</dd>
+      <dt>Outlook</dt><dd>The biggest structural gain of the week. Now within 30 points of RJ and Perdew, which turns the West&#x27;s two points berths into a three-way race.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="texan-bruisers">
+  <div class="slab gc"><span class="grade">C+</span><span class="divrank">West #5</span></div>
+  <div class="body">
+    <header><h3>Texan Bruisers</h3><div class="pts">3,056<small> / 3,072 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 3RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -16 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:16.72%" title="QB: 511 projected points">QB 511</span><span class="seg s-RB" style="width:29.12%" title="RB: 890 projected points">RB 890</span><span class="seg s-WR" style="width:15.45%" title="WR: 472 projected points">WR 472</span><span class="seg s-TE" style="width:5.56%" title="TE: 170 projected points">TE</span><span class="seg s-IDP" style="width:26.80%" title="IDP: 819 projected points">IDP 819</span><span class="seg s-PK" style="width:6.35%" title="PK: 194 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Michael Pittman, Mark Andrews and Tykee Smith in the first minute, plus a Zach Charbonnet add-and-IR that gives them 24 effective bodies.</dd>
+      <dt>Strengths</dt><dd>Legal, balanced, and the IR manoeuvre was the sharpest roster-mechanics play anyone made. Bijan anchors everything.</dd>
+      <dt>Weaknesses</dt><dd>Only Tykee Smith reaches the starting fourteen. Loveland and Andrews at tight end project 170 combined for the slot. Sorrell is a near-zero in the fifth IDP spot.</dd>
+      <dt>Outlook</dt><dd>Fifth in the West. No disasters and no lever; the roster is what it was on Sunday, slightly deeper.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="zima-fatbacks">
+  <div class="slab gc"><span class="grade">C</span><span class="divrank">West #6</span></div>
+  <div class="body">
+    <header><h3>Zima Fatbacks</h3><div class="pts">2,994<small> / 3,088 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 3RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -94 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:16.50%" title="QB: 494 projected points">QB 494</span><span class="seg s-RB" style="width:28.66%" title="RB: 858 projected points">RB 858</span><span class="seg s-WR" style="width:13.29%" title="WR: 398 projected points">WR 398</span><span class="seg s-TE" style="width:6.05%" title="TE: 181 projected points">TE</span><span class="seg s-IDP" style="width:30.66%" title="IDP: 918 projected points">IDP 918</span><span class="seg s-PK" style="width:4.84%" title="PK: 145 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Lutz, Coker and Doubs at 7:16, Quentin Johnston later that morning — then at 11:50 p.m. dropped Andrew Van Ginkel to add Jake Ferguson.</dd>
+      <dt>Strengths</dt><dd>Myles Garrett is still the highest-projecting single defender in the league at 262. Four startable running backs. The kicker hole is closed.</dd>
+      <dt>Weaknesses</dt><dd>Lutz projects 145, the weakest leg drafted or added anywhere. The Van Ginkel drop leaves exactly five IDP with Bosa, coming off an ACL, locked into the fifth slot — one injury or bye from an illegal lineup.</dd>
+      <dt>Outlook</dt><dd>The only team to finish Tuesday worse than it started. Sixth in the West.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="psycho-billiecats">
+  <div class="slab gd"><span class="grade">D</span><span class="divrank">West #7</span></div>
+  <div class="body">
+    <header><h3>Psycho Billiecats</h3><div class="pts">2,656<small> / 2,941 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 2RB · 3WR · 1TE · 5 IDP · 1 PK</span><span class="chip warn">1 starting slot still empty</span><span class="chip warn">Tuesday -285 pts</span><span class="chip ok">D+ &rarr; D</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:18.41%" title="QB: 489 projected points">QB 489</span><span class="seg s-RB" style="width:23.57%" title="RB: 626 projected points">RB 626</span><span class="seg s-WR" style="width:30.95%" title="WR: 822 projected points">WR 822</span><span class="seg s-TE" style="width:6.97%" title="TE: 185 projected points">TE</span><span class="seg s-IDP" style="width:13.63%" title="IDP: 362 projected points">IDP 362</span><span class="seg s-PK" style="width:6.48%" title="PK: 172 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Six adds: Mevis at kicker, Julian Love, Latu, Ezeiruaku, Woody Marks and Kaelon Black, plus Jacobs and Parsons to IR.</dd>
+      <dt>Strengths</dt><dd>Jonathan Taylor and Puka Nacua are a genuine top-two, and the receiving depth behind them is the best in the West.</dd>
+      <dt>Weaknesses</dt><dd>The defence projects 362 against a league average of 828, and one IDP slot is still empty with Aaron Donald, retired, occupying another. Five defenders projecting 165 or better sat unclaimed all day.</dd>
+      <dt>Outlook</dt><dd>Last in the West by 338 and the only team in the league that still cannot field a legal starting fourteen.</dd>
+    </dl>
+  </div>
+</article></div>
+</section>
+<section>
+<h2>Eastern Division</h2>
+<div class="teams"><article class="team" id="fields-fanatix">
+  <div class="slab ga"><span class="grade">A-</span><span class="divrank">East #1</span></div>
+  <div class="body">
+    <header><h3>Fields Fanatix</h3><div class="pts">3,340<small> / 3,351 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 3RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -11 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:18.05%" title="QB: 603 projected points">QB 603</span><span class="seg s-RB" style="width:27.15%" title="RB: 907 projected points">RB 907</span><span class="seg s-WR" style="width:18.11%" title="WR: 605 projected points">WR 605</span><span class="seg s-TE" style="width:6.11%" title="TE: 204 projected points">TE</span><span class="seg s-IDP" style="width:23.74%" title="IDP: 793 projected points">IDP 793</span><span class="seg s-PK" style="width:6.85%" title="PK: 229 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Kamari Lassiter at 7:01:01, Travis Kelce at 7:00:23, Baker Mayfield at 7:00:12. Three adds, all before the second minute.</dd>
+      <dt>Strengths</dt><dd>The only Eastern manager who bought a defensive back. Stafford and Goff project 603 from two slots. McCaffrey plus a 900-point backfield.</dd>
+      <dt>Weaknesses</dt><dd>The defence projects 793 with a rookie in the fifth slot, and that is the entire gap to the top of the table. Goedert and Kelce is a thin tight end room for a 16.5-game season.</dd>
+      <dt>Outlook</dt><dd>Eastern favourite and the most likely Ballistic Bowl opponent. Closing the defensive gap is a wire problem, not a draft problem.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="rhodes-runners">
+  <div class="slab gb"><span class="grade">B+</span><span class="divrank">East #2</span></div>
+  <div class="body">
+    <header><h3>Rhodes Runners</h3><div class="pts">3,315<small> / 3,335 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 4RB · 1WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -20 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:14.36%" title="QB: 476 projected points">QB 476</span><span class="seg s-RB" style="width:33.68%" title="RB: 1116 projected points">RB 1116</span><span class="seg s-WR" style="width:9.75%" title="WR: 323 projected points">WR 323</span><span class="seg s-TE" style="width:6.76%" title="TE: 224 projected points">TE</span><span class="seg s-IDP" style="width:28.73%" title="IDP: 952 projected points">IDP 952</span><span class="seg s-PK" style="width:6.73%" title="PK: 223 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Harold Fannin at 7:00:05, Jordan Love at 7:01:20, then Nick Cross — swapped for Andrew Van Ginkel three hours later.</dd>
+      <dt>Strengths</dt><dd>Jordan Love and Van Ginkel both start. The defence now projects 952, second only to Frost. Four running backs under the new cap.</dd>
+      <dt>Weaknesses</dt><dd>One startable wide receiver in the optimal shape, because the 2QB·4RB build squeezes the position down to Chase alone. Murray as QB3 projects 127.</dd>
+      <dt>Outlook</dt><dd>Third overall and second in the East by 25 points. The roster has no hole; it has a shape that depends on Chase staying healthy.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="nachman-manning-face">
+  <div class="slab gb"><span class="grade">B+</span><span class="divrank">East #3</span></div>
+  <div class="body">
+    <header><h3>Nachman Manning Face</h3><div class="pts">3,268<small> / 3,298 Sun</small></div></header>
+    <div class="chips"><span class="chip">1QB · 4RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -30 pts</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:7.47%" title="QB: 244 projected points">QB</span><span class="seg s-RB" style="width:38.05%" title="RB: 1243 projected points">RB 1243</span><span class="seg s-WR" style="width:16.96%" title="WR: 554 projected points">WR 554</span><span class="seg s-TE" style="width:5.20%" title="TE: 170 projected points">TE</span><span class="seg s-IDP" style="width:27.06%" title="IDP: 884 projected points">IDP 884</span><span class="seg s-PK" style="width:5.26%" title="PK: 172 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Josh Downs and Wan&#x27;Dale Robinson at 8:09, Chase Young a minute later, and TreVeyon Henderson to IR that night.</dd>
+      <dt>Strengths</dt><dd>A backfield projecting 1,243 and the only defensive-back-leaning IDP unit in the East. Chase Young walks straight into the starting five.</dd>
+      <dt>Weaknesses</dt><dd>One tight end on the roster and Mevis at kicker, the two weakest single slots on any top-five team. Daniels prices at 191, so the quarterback room is effectively Dart.</dd>
+      <dt>Outlook</dt><dd>Fourth overall. Still holding the league&#x27;s only open roster spot, which is a free upgrade waiting to be taken.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="wallie-s-texas-stars">
+  <div class="slab gb"><span class="grade">B</span><span class="divrank">East #4</span></div>
+  <div class="body">
+    <header><h3>Wallie&#x27;s Texas Stars</h3><div class="pts">3,232<small> / 3,244 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 3RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -12 pts</span><span class="chip ok">B- &rarr; B</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:17.94%" title="QB: 580 projected points">QB 580</span><span class="seg s-RB" style="width:24.68%" title="RB: 798 projected points">RB 798</span><span class="seg s-WR" style="width:19.33%" title="WR: 625 projected points">WR 625</span><span class="seg s-TE" style="width:5.72%" title="TE: 185 projected points">TE</span><span class="seg s-IDP" style="width:26.14%" title="IDP: 845 projected points">IDP 845</span><span class="seg s-PK" style="width:6.19%" title="PK: 200 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Rico Dowdle at 7:36, J.K. Dobbins at 7:32, Trey Hendrickson at 7:33. All three are useful; two of them start.</dd>
+      <dt>Strengths</dt><dd>Dowdle is the best skill player added on either wire. Maye and Prescott project 580 from two slots. Nacua anchors the receiving room.</dd>
+      <dt>Weaknesses</dt><dd>Six defensive ends and no defensive back at all, so the defence is capped by type at 845. Tight end is Tyler Warren and Isaiah Likely, projecting 185 for the slot.</dd>
+      <dt>Outlook</dt><dd>Up two places to fifth overall. The roster is deep everywhere except the two positions where depth is cheapest to buy.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="houston-rams">
+  <div class="slab gb"><span class="grade">B-</span><span class="divrank">East #5</span></div>
+  <div class="body">
+    <header><h3>Houston Rams</h3><div class="pts">3,201<small> / 3,097 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 2RB · 3WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip ok">Tuesday +104 pts</span><span class="chip ok">C+ &rarr; B-</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:16.43%" title="QB: 526 projected points">QB 526</span><span class="seg s-RB" style="width:19.11%" title="RB: 612 projected points">RB 612</span><span class="seg s-WR" style="width:24.80%" title="WR: 794 projected points">WR 794</span><span class="seg s-TE" style="width:9.59%" title="TE: 307 projected points">TE 307</span><span class="seg s-IDP" style="width:22.20%" title="IDP: 711 projected points">IDP 711</span><span class="seg s-PK" style="width:7.87%" title="PK: 252 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Nate Landman, Sonny Styles and David Bailey inside 90 seconds of the open — three empty IDP slots filled before 7:02.</dd>
+      <dt>Strengths</dt><dd>Biggest points gain of the week at +104. McBride and Bijan are a top-two nobody else can match, and the receiving room projects 794.</dd>
+      <dt>Weaknesses</dt><dd>The five starting defenders project 711, second-worst in the league, because two of them are rookies with no NFL snaps and Sorrell projects 55. Donald, retired, is still rostered.</dd>
+      <dt>Outlook</dt><dd>The counting problem is fixed; the talent problem is not. Fifth in the East despite the jump.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="igama-sweaty-palms">
+  <div class="slab gc"><span class="grade">C+</span><span class="divrank">East #6</span></div>
+  <div class="body">
+    <header><h3>Igama Sweaty Palms</h3><div class="pts">3,134<small> / 3,086 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 3RB · 2WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip ok">Tuesday +48 pts</span><span class="chip ok">C- &rarr; C+</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:14.77%" title="QB: 463 projected points">QB 463</span><span class="seg s-RB" style="width:31.01%" title="RB: 972 projected points">RB 972</span><span class="seg s-WR" style="width:15.67%" title="WR: 491 projected points">WR 491</span><span class="seg s-TE" style="width:6.54%" title="TE: 205 projected points">TE</span><span class="seg s-IDP" style="width:25.81%" title="IDP: 809 projected points">IDP 809</span><span class="seg s-PK" style="width:6.19%" title="PK: 194 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Byron Young and Josh Sweat at 7:04, Tykee Smith at 7:02, Montez Sweat at 7:09, plus Charbonnet and Jacobs to IR.</dd>
+      <dt>Strengths</dt><dd>Went from two defenders to six in nine minutes and added 489 points of starting lineup, the largest single-day haul in the league.</dd>
+      <dt>Weaknesses</dt><dd>The defence still projects 809 from bodies that were free at 7 a.m., which is the going rate rather than an edge. Twenty skill players for eight slots.</dd>
+      <dt>Outlook</dt><dd>Up two places to sixth in the East. The wire did what the draft did not.</dd>
+    </dl>
+  </div>
+</article><article class="team" id="d-crownholder">
+  <div class="slab gc"><span class="grade">C-</span><span class="divrank">East #7</span></div>
+  <div class="body">
+    <header><h3>D Crownholder</h3><div class="pts">2,865<small> / 2,968 Sun</small></div></header>
+    <div class="chips"><span class="chip">2QB · 2RB · 3WR · 1TE · 5 IDP · 1 PK</span><span class="chip ok">All 14 slots filled</span><span class="chip warn">Tuesday -103 pts</span><span class="chip ok">D &rarr; C-</span></div>
+    <div class="bar" role="img" aria-label="Projected points by position"><span class="seg s-QB" style="width:18.92%" title="QB: 542 projected points">QB 542</span><span class="seg s-RB" style="width:17.98%" title="RB: 515 projected points">RB 515</span><span class="seg s-WR" style="width:23.56%" title="WR: 675 projected points">WR 675</span><span class="seg s-TE" style="width:6.39%" title="TE: 183 projected points">TE</span><span class="seg s-IDP" style="width:26.60%" title="IDP: 762 projected points">IDP 762</span><span class="seg s-PK" style="width:6.56%" title="PK: 188 projected points">PK</span></div>
+    <dl>
+      <dt>Tuesday</dt><dd>Nothing until 9:40 p.m., then Bosa, Devin White and Arvell Reese in seven minutes.</dd>
+      <dt>Strengths</dt><dd>The defence is legal for the first time and Devin White projects 174 in the fourth slot. Josh Allen and Derrick Henry are a real top two.</dd>
+      <dt>Weaknesses</dt><dd>Waiting fourteen hours cost them: Bobby Wagner, Kevin Byard and Marcus Jones were all still available at 9:40 and none of them was taken. Kittle is the only tight end.</dd>
+      <dt>Outlook</dt><dd>Up one place to seventh in the East, still last in the division.</dd>
+    </dl>
+  </div>
+</article></div>
+</section>
+</div>
+
+<h2 class="outlook">Where it stands</h2>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>Division favourite</th><th>Chasing</th><th>Watch</th><th>Cellar</th></tr></thead>
+<tbody>
+<tr><td><strong>West</strong></td><td>Frost, by 424</td><td>RJ, Perdew, Albany — all within 30 points of each other</td><td>Zima, one defensive injury from an illegal lineup</td><td>Psycho</td></tr>
+<tr><td><strong>East</strong></td><td>Fields, by 25</td><td>Rhodes, Nachman, Wallie's — all within 108</td><td>Nachman, still holding the league's only open roster spot</td><td>Crownholder</td></tr>
+</tbody></table></div>
+
+<h2>Method</h2>
+<div class="method">
+<p>Rosters were pulled from the live MFL export on Wednesday 9 September at 4:45 a.m. ET, which includes every transaction through 11:50 p.m. Tuesday. Every player is priced in eSFL scoring from his 2025 league-scored per-game rate. A player with 14 or more games in 2025 keeps his rate; below that, the rate is regressed toward a positional baseline in proportion to the games he missed, then multiplied by his expected 2026 games. Rookies, retirees and players with no 2025 line carry a projection instead.</p>
+<p>Each roster is then run through every legal 14-man lineup (QB 1-2 · RB 0-4 · WR 0-4 · TE 1-3 · PK 1 · IDP 5) and the best one is kept. The bar on each card is that lineup's projected points by position, so the widths are directly comparable between teams. Unlike Sunday's report card there is no "patched" column: every slot is now filled by the player actually in it, which is why teams that took a weaker free agent than a typical one lose ground against their Sunday line even though they made moves.</p>
+<p>Projections are opinions. Treat ±100 on a season total as noise, and treat the gaps between teams inside a 60-point band as no gap at all. Every team was run through the same model, including the author's.</p>
+</div>
+
+<footer>Thirteen of fourteen rosters are now legal. Aaron Donald, retired, is still on two rosters. Micah Parsons is listed IR-PUP with an October return; Josh Jacobs' suspension ends 27 September. Sixty-three transactions were processed on Tuesday, thirty-one of them in the first fifteen minutes.</footer>
+</div>
+</body>
+</html>
